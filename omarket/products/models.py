@@ -10,6 +10,8 @@ class User(models.Model):
 
     last_name = models.CharField(max_length=100)
 
+    is_admin = models.BooleanField(default=False)
+
     email = models.EmailField(unique=True, blank=True)
 
     password = models.CharField(max_length=100)
@@ -20,3 +22,6 @@ class User(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.email
