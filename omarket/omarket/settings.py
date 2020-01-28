@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     #Propias
     'products',
+    'users'
 
 ]
 
