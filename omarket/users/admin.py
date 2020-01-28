@@ -21,5 +21,23 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = (
          'created','modified','user__is_staff')
 
+    fieldsets = (
+        ('Profile', {
+           'fields': ('user',)
+
+        }
+        ),
+        ('Info user:',{
+            'fields':('address',)
+        }
+        ),
+        ('Metadata:',{
+            'fields': (('created','modified'))
+        })
+
+
+    )
+
+    readonly_fields = ('created','modified')
     
 
