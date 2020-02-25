@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings #esto se importa para la media
+from django.conf.urls.static import static #esto se importa para la media
+
+from users import views as user_views
+
+from omarket import Gviews
 
 urlpatterns = [
+    path('home/', Gviews.Home, name="home"),
     path('admin/', admin.site.urls),
-]
+
+    path('users/login', user_views.login_view, name="login")
+
+] 
+#+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
