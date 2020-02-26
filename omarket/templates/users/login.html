@@ -26,6 +26,7 @@
 
                 <img src="{% static "img/comarket.png" %}" class="img-fluid rounded mx-auto d-block pb-4" style="max-width: 60%;">
 <!--container-->
+                <h1 style="text-align:center">Inicio de sesión</h1>
                 {% if error %}
                     <p class="alert alert-danger" style="color:red;">{{error}}</p>
                 {% endif %}
@@ -43,6 +44,8 @@
                     <button class="btn btn-success btn-block mt-5" type="submit">Acceder</button>
                     
                 </form>
+
+                <p class="mt-4">¿Aún sin cuenta? <a href="{% url "signup"%}">Regístrate aquí</a></p>
 <!--container-->              
 
             </div>
