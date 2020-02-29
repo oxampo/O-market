@@ -17,15 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings #esto se importa para la media
 from django.conf.urls.static import static #esto se importa para la media
-
+from products import views as product_views
 from users import views as user_views
 
 from omarket import Gviews
 
 urlpatterns = [
     path('home/', Gviews.Home, name="home"),
+    path('compras/', Gviews.Compras, name="compras"),
     path('admin/', admin.site.urls),
-
+    path('crud-productos/', product_views.crudProduct, name="crud-productos"),
     path('users/login', user_views.login_view, name="login"),
     path('users/logout', user_views.logout_view,name='logout'),
     path('users/signup',user_views.signup,name="signup")
