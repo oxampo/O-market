@@ -9,7 +9,7 @@ from .forms import productForm
 
 def productList(request):
     context = {'product_list':Products.objects.all()}
-    return render(request, 'product-list.html', context)
+    return render(request, 'products/product-list.html', context)
 
 def crudProduct(request, id=0):
     if request.method == "GET":
@@ -18,7 +18,7 @@ def crudProduct(request, id=0):
         else:
             product = Products.objects.get(pk=id) #obten todos los productos donde su primary key sea igual al id
             form = productForm(instance=product)
-        return render(request, 'crud-product.html', {'form':form})
+        return render(request, 'products/crud-product.html', {'form':form})
     else:
         if id==0:
             form = productForm(request.POST)
