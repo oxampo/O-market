@@ -27,6 +27,9 @@ urlpatterns = [
     path('compras/', Gviews.Compras, name="compras"),
     path('admin/', admin.site.urls),
     path('crud-productos/', product_views.crudProduct, name="crud-productos"),
+    path('product-list/', product_views.productList, name="product-list"),
+    path('product-list/<int:id>/', product_views.crudProduct, name="product-update"),
+    #path('delete-product'),
     path('users/login', user_views.login_view, name="login"),
     path('users/logout', user_views.logout_view,name='logout'),
     path('users/signup',user_views.signup,name="signup")

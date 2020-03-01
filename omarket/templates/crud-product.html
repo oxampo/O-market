@@ -36,6 +36,10 @@
         {% csrf_token %}
         {{form}}
         <button class="btn btn-success mt-5" type="submit">Crear</button>
+        <a href="{% url 'product-list' %}">Ver Lista</a>
+        {% if error %}
+            <p class="alert alert-danger">{{error}}</p>
+        {% endif %}
     </form>
     
     
