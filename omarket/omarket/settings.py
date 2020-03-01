@@ -85,9 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'omarketdb',
-        'USER': 'root',
-        'PASSWORD': 'toor', 
-        'HOST': '127.0.0.1',
+        'USER': 'omarket',
+        'PASSWORD': '123', 
+        'HOST': 'localhost',
         'PORT': '3306',
     },
 }
