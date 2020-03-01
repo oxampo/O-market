@@ -6,4 +6,9 @@ from django.template.loader import get_template
 def Home(request):
     
     return render(request, 'home.html')
+
+
+def QuerysChingones(request):
+
+    return render(request,'QueriesChingones/main.html')
     
