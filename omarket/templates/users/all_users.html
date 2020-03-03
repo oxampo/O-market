@@ -1,0 +1,35 @@
+
+<form action="{% url 'all_users' %}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="form-group" >
+                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="username" required="true"/>
+                    </div>
+
+                    <button class="btn btn-success btn-block mt-5" type="submit">Obtener datos de usuario</button>
+
+
+</form>
+
+{% if error %}
+    <p class="alert alert-danger">{{error}}</p>
+{% endif %}
+
+{% if ok or okk %}
+
+<form action="{% url 'all_users' %}" method="POST">
+{% csrf_token %}
+    <div class="form-group" >
+        <p>Nombre de usuario</p>
+        <input type="text" class="form-control" placeholder={{user.first_name}} name="new_name" />
+    </div>  
+
+
+    <button type="submit">editar</button>
+</form>
+{% endif %}
+
+
+
+
+

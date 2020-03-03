@@ -13,6 +13,7 @@ from django.db.utils import IntegrityError
 
 
 # Create your views here.
+"""
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -25,7 +26,7 @@ def login_view(request):
         else:
             return render(request, 'users/login.html',{'error':'Nombre de usuario o contraseña incorrecta'})
     return render(request, 'users/login.html')
-
+"""
 
 def signup(request):
 
@@ -58,7 +59,7 @@ def signup(request):
     return render(request, 'users/signup.html')
 
 
-@login_required
+
 def logout_view(request):
     logout(request)
     return redirect('login')
@@ -66,6 +67,30 @@ def logout_view(request):
 def main(request):
     return render(request,'users/main.html')
 
+def get_all(request):
 
+    if request.method=='POST':
+            
+        try:
+            user = User.objects.get(username=request.POST['username'])
+            if  not user.is_staff:
+
+                return render(request, 'users/all_users.html', {'user':user, 'ok':True})
+
+            elif user.is_authenticated and request.POST['username']==user.username:
+
+                return render(request, 'users/all_users.html', {'user':user,'okk':True})
+
+        except:
+            return render(request, 'users/all_users.html', {'error':'No hay usuario encontrado'})
+
+
+        if request.POST['new_username'] != None:
+           
+            user.first_name = request.POST['new_name']
+            user.save(force_update=True)
+            
+        
+    return render(request, 'users/all_users.html')
 
     
