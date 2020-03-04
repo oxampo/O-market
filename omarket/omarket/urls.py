@@ -33,7 +33,8 @@ urlpatterns = [
     path('users/main/signup',user_views.signup,name="signup"),
     path('querychingon', Gviews.QuerysChingones, name="chingones"),
     path('users/main', user_views.main, name="user_main"),
-    path('users/main/all_users', user_views.get_all, name="all_users")
+    path('users/main/modify_user', user_views.modify_user, name="modify_user"),
+    path('users/main/all', user_views.get_all, name="getall")
 
 ] 
 #+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -18,7 +18,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     #user ya recibe lo de los nombres, username, etc
     address = models.CharField(max_length=100, blank=True, null=True)
-    nro_purchases = models.IntegerField(null=True, blank=True)
+    cedula = models.PositiveIntegerField(max_length=7, blank=False, null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

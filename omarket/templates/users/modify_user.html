@@ -1,0 +1,59 @@
+
+{% if ready %}
+    <p>¡{{ready}}!</p>
+    <br>
+{% endif %}
+
+
+<form action="{% url 'modify_user' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Nombre de usuario" name="username" required="true"/>
+    </div>
+
+    <button class="btn btn-success btn-block mt-5" type="submit" name="search">Obtener datos de usuario</button>
+
+</form>
+
+{% if error %}
+    <p class="alert alert-danger">{{error}}</p>
+{% endif %}
+
+
+
+{% if ok or okk %}
+<form action="{% url 'modify_user' %}" method="POST">
+    {% csrf_token %}
+        <div class="form-group" >
+            <p>Nombre</p>
+                <input type="text" class="form-control" placeholder={{user.first_name}} name="newname" required="true"/>
+            <p>Apellido</p>
+                <input type="text" class="form-control" placeholder={{user.last_name}} name="newlname" required="true"/>
+            <p>Email</p>
+                <input type="text" class="form-control" placeholder={{user.email}} name="newemail" required="true"/>
+            
+            {% if profile %}
+                <p>Dirección</p> 
+                    <input type="text" class="form-control" placeholder={{profile.address | default_if_none:"ninguna"}} name="newaddress" required="true"/>
+            
+                <p>Cédula</p> 
+                    <input type="text" class="form-control" placeholder={{profile.cedula | default_if_none:"ninguna"}} name="newcedula" required="true"/>
+            
+            
+            {% endif %}
+            
+            
+            <p>id: {{user.id}}</p>
+            <input type="hidden" name="userid" value={{user.id}}> 
+        </div>  
+
+
+    <button type="submit" name="edit" value="True">editar</button>
+</form>
+{% endif %}
+
+
+
+
+

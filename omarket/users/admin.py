@@ -9,7 +9,7 @@ from users.models import Profile
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
 
-    list_display = ('pk','user', 'address')
+    list_display = ('pk','user', 'address','cedula')
 
     list_display_links = ('pk','user')
 
@@ -28,7 +28,7 @@ class ProfileAdmin(admin.ModelAdmin):
         }
         ),
         ('Info user:',{
-            'fields':('address',)
+            'fields':('address','cedula')
         }
         ),
         ('Metadata:',{
