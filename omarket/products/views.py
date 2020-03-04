@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from django.http import HttpResponse
 from django.db.utils import IntegrityError
-from products.models import Products
-from products.models import Animals
-from products.models import Corts
+from .models import Products
+from .models import Animals
+from .models import Cuts
 from .forms import productForm
 from .forms import animalForm
 from .forms import corteForm
@@ -12,7 +12,7 @@ from .forms import corteForm
 # Create your views here.
 
 def corteList(request):
-    context = {'corte_list':Corts.objects.all()}
+    context = {'corte_list':Cuts.objects.all()}
     return render(request, 'products/corte-list.html', context)
 
 def crudCorte(request, id=0):
@@ -20,14 +20,14 @@ def crudCorte(request, id=0):
         if id==0:   #Si ID es igual a 0 es una operacion de Crear
             form = corteForm()
         else:
-            corte = Corts.objects.get(pk=id) #obten todos los productos donde su primary key sea igual al id
+            corte = Cuts.objects.get(pk=id) #obten todos los productos donde su primary key sea igual al id
             form = corteForm(instance=corte)
         return render(request, 'products/crud-corte.html', {'form':form})
     else:
         if id==0:
             form = corteForm(request.POST)
         else:
-            corte = Corts.objects.get(pk=id)
+            corte = Cuts.objects.get(pk=id)
             form = corteForm(request.POST,instance= corte)
         if form.is_valid():
             form.save()
