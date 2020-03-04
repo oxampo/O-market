@@ -1,12 +1,12 @@
 from django import forms
 from .models import Products
 from .models import Animals
-from .models import Corts
+from .models import Cuts
 
 class corteForm(forms.ModelForm):
 
     class Meta:
-        model = Corts
+        model = Cuts
         fields = '__all__'
 
 class animalForm(forms.ModelForm):
