@@ -1,6 +1,20 @@
 from django import forms
 from .models import Products
+from .models import Animals
+from .models import Corts
 
+class corteForm(forms.ModelForm):
+
+    class Meta:
+        model = Corts
+        fields = '__all__'
+
+class animalForm(forms.ModelForm):
+    
+    class Meta:
+        model = Animals
+        fields = '__all__'
+    
 
 
 class productForm(forms.ModelForm):

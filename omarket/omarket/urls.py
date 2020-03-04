@@ -26,9 +26,19 @@ urlpatterns = [
     path('home/', Gviews.Home, name="home"),
     path('compras/', Gviews.Compras, name="compras"),
     path('admin/', admin.site.urls),
+
     path('crud-productos/', product_views.crudProduct, name="crud-productos"),
     path('product-list/', product_views.productList, name="product-list"),
     path('product-list/<int:id>/', product_views.crudProduct, name="product-update"),
+
+    path('crud-animal/', product_views.crudAnimal, name="crud-animal"),
+    path('animal-list/', product_views.animalList, name="animal-list"),
+    path('animal-list/<int:id>/', product_views.crudAnimal, name="animal-update"),
+
+    path('crud-corte/', product_views.crudCorte, name="crud-corte"),
+    path('corte-list/', product_views.corteList, name="corte-list"),
+    path('corte-list/<int:id>/', product_views.crudCorte, name="corte-update"),
+
     #path('delete-product'),
     path('users/login', user_views.login_view, name="login"),
     path('users/logout', user_views.logout_view,name='logout'),

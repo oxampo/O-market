@@ -15,19 +15,14 @@
 <body>
     <!-- {% include "nav.html" %} -->
 
-    <h1>Productos</h1>
+    <h1>Animales</h1>
     
     <table class="table table-borderless">
         <thead>
             <tr>
                 <td>Nombre</td>
-                <td>Precio</td>
-                <td>Disponibilidad</td>
-                <td>Descripción</td>
-                <td>Animal</td>
-                <td>Corte</td>
                 <td>
-                    <a href="{% url 'crud-productos' %}" class="btn text-secondary px-0">
+                    <a href="{% url 'crud-animal' %}" class="btn text-secondary px-0">
                         (Create)
                     </a>
                 </td>
@@ -35,16 +30,11 @@
             
         </thead>
         <tbody>
-            {% for Products in product_list %}
+            {% for Animals in animal_list %}
                 <tr>
-                    <td>{{ Products.prodName }}</td>
-                    <td>{{ Products.precio }}$</td>
-                    <td>{{ Products.disponibles }}</td>
-                    <td>{{ Products.descripcion }}</td>
-                    <td>{{ Products.animal }}</td>
-                    <td>{{ Products.corte }}</td>
+                    <td>{{ Animals.animal }}</td>
                     <td>
-                        <a href="{% url 'product-update' Products.id %}" class="btn text-secondary px-0">
+                        <a href="{% url 'animal-update' Animals.id %}" class="btn text-secondary px-0">
                             (Edit)
                         </a>
                     </td>
