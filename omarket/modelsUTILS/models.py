@@ -1,11 +1,12 @@
+from django.db import models
+
+# Create your models here.
 """  Project models """
 #Django
 from django.db import models
 
 #Models
 from users.models import Profile,Addresses
-
-
 
 class Puzzle(models.Model):
 
@@ -36,8 +37,4 @@ class Delivery(models.Model):
     orden = models.OneToOneField(Orden, on_delete=models.CASCADE)
     direccion = models.ForeignKey(Addresses, on_delete=models.CASCADE)
     entregado = models.BooleanField(blank=False, null=True)
-
-
-
-
 

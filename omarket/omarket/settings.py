@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #Propias
     'products',
     'users',
+    'modelsUTILS'
 
 ]
 
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'omarket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'omarket',
+        'NAME': 'Omarket',
         'USER': 'root',
         'PASSWORD': 'toor', 
         'HOST': '127.0.0.1',
