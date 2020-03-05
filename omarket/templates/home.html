@@ -8,63 +8,60 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!--en el último link se accede a lo del icono de logout que sale en la pagina-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
 <style>
+iframe{
+    height:100vh;
+    width:100%;
+
+}
    
-   body {
-       background:green;
-   }
-
-   .container {
-
-       display:flex;
-       width:100%;
-       background: white;
-       //*height:100%;
-       padding-bottom: 100px;
-*/
-   }
-
-   .box{
-       display: flex;
-       width:100%;
-       background: yellow;
-      align-items: center;
-    justify-content: space-around;
-
-   }
-
-   .square {
-       display: flex;
-       width:100px;
-       height:100px;
-       background: blue;
-       color:white;
-       align-items:center;
-       
-   }
-
 </style>
 
 </head>
 <body>
-    {% include "nav.html" %}
-    {% include "homeslider.html" %}
+<!--imagen de Omarket-->
+    <center>
+        <img src="{% static "img/1omarket.png" %}" height=”250” width=200”>
+    </center>
+<!--navbar-->
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" id="pills-user-tab" data-toggle="tab" href="#pills-user" role="tab" aria-controls="pills-user" aria-selected="false">Usuarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-product-tab" data-toggle="pill" href="#pills-product" role="tab" aria-controls="pills-product" aria-selected="false">Productos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-sell-tab" data-toggle="pill" href="#pills-sell" role="tab" aria-controls="pills-sell" aria-selected="false">Venta</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-query-tab" data-toggle="pill" href="#pills-query" role="tab" aria-controls="pills-query" aria-selected="false">Querys chingones</a>
+        </li>
 
-    <p>Home</p>
-    <p>asdcasdcasdcasdcasdcsadcsd</p>
-    <div class="container">
-      <p>este es un div para poder ver como funciona esta mierda
-      </p>  
-    </div>
+    </ul>
 
-    <div class="container">
-        <div class="box">
-            <div class="square">producto 1</div>
-            <div class="square">producto 2</div>
-            <div class="square">producto 3</div>
+    <div class="tab-content" id="pills-tabContent">
+        
+        <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab">
+                <iframe  src="{% url "user_main"%}"></iframe>
+        </div>
+
+        <div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-product-tab">
+            Aquí va lo de los productos
+        </div>
+
+        <div class="tab-pane fade" id="pills-sell" role="tabpanel" aria-labelledby="pills-sell-tab">
+            Aquí va lo de la venta
+        </div>
+
+        <div class="tab-pane fade" id="pills-query" role="tabpanel" aria-labelledby="pills-query-tab">
+            <iframe  src="{% url "chingones"%}"></iframe>
         </div>
     </div>
-
 </body>
 </html>

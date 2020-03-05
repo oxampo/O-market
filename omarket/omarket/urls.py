@@ -22,6 +22,8 @@ from users import views as user_views
 
 from omarket import Gviews
 
+
+
 urlpatterns = [
     path('home/', Gviews.Home, name="home"),
     path('compras/', Gviews.Compras, name="compras"),
@@ -50,7 +52,14 @@ urlpatterns = [
     #path('delete-product'),
     path('users/login', user_views.login_view, name="login"),
     path('users/logout', user_views.logout_view,name='logout'),
-    path('users/signup',user_views.signup,name="signup")
+    path('users/signup',user_views.signup,name="signup"),
+    #path('users/login', user_views.login_view, name="login"),
+    #path('users/logout', user_views.logout_view,name='logout'),
+    path('users/main/signup',user_views.signup,name="signup"),
+    path('querychingon', Gviews.QuerysChingones, name="chingones"),
+    path('users/main', user_views.main, name="user_main"),
+    path('users/main/modify_user', user_views.modify_user, name="modify_user"),
+    path('users/main/all', user_views.get_all, name="getall")
 
 ] 
 #+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

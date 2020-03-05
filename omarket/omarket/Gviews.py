@@ -13,4 +13,8 @@ def Compras(request):
     return render(request, 'compras.html')
 
 
+
+def QuerysChingones(request):
+
+    return render(request,'QueriesChingones/main.html')
     

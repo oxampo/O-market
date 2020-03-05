@@ -1,0 +1,8 @@
+
+{% for user,info in data.items  %}
+    <p>   Nombre de usuario: <strong>{{user}}</strong></p>
+    <p>     - Nombre & Apellido: <strong>{{info.name}} {{info.lastname}}</strong></p>
+    <p>     - Cédula: <strong>{{info.dni}}</strong></p>
+    <br>
+    <br>
+{% endfor %}
