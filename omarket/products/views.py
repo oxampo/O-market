@@ -61,6 +61,12 @@ def crudAnimal(request, id=0):
     else:
         if id==0:
             form = animalForm(request.POST)
+            validar = form['animalName'].value()
+            animales = Animals.objects.all()
+            for animal in animales:
+                if validar == animal.animalName:
+                    #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
+                    return redirect('animal-list')
         else:
             animal = Animals.objects.get(pk=id)
             form = animalForm(request.POST,instance= animal)
@@ -83,6 +89,12 @@ def crudPiece(request, id=0):
     else:
         if id==0:
             form = piecesForm(request.POST)
+            validar = form['pieceName'].value()
+            piezas = Pieces.objects.all()
+            for pieza in piezas:
+                if validar == pieza.pieceName:
+                    #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
+                    return redirect('piece-list')
         else:
             pieza = Pieces.objects.get(pk=id)
             form = piecesForm(request.POST,instance= pieza)
@@ -105,6 +117,12 @@ def crudProduct(request, id=0):
     else:
         if id==0:
             form = productForm(request.POST)
+            validar = form['prodName'].value()
+            productos = Products.objects.all()
+            for producto in productos:
+                if validar == producto.prodName:
+                    #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
+                    return redirect('product-list')
         else:
             product = Products.objects.get(pk=id)
             form = productForm(request.POST,instance= product)
@@ -127,6 +145,7 @@ def asignarPrecio(request, id=0):
     else:
         if id==0:
             form = priceForm(request.POST)
+            
         else:
             price = Price.objects.get(pk=id)
             form = priceForm(request.POST,instance= price)

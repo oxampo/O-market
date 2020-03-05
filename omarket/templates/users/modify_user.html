@@ -1,0 +1,71 @@
+
+{% if ready %}
+    <p>¡{{ready}}!</p>
+    <br>
+{% endif %}
+
+
+<form action="{% url 'modify_user' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Nombre de usuario" name="username" required="true"/>
+    </div>
+
+    <button class="btn btn-success btn-block mt-5" type="submit" name="search">Obtener datos de usuario</button>
+
+</form>
+
+{% if error %}
+    <p class="alert alert-danger">{{error}}</p>
+{% endif %}
+
+
+
+{% if ok or okk %}
+    <form action="{% url 'modify_user' %}" method="POST">
+        {% csrf_token %}
+
+        <div class="form-group" >
+
+            {% if user %}
+                <p>Nombre</p>
+                    <input type="text" class="form-control" value={{user.first_name| default_if_none:""}} placeholder={{user.first_name| default_if_none:"ninguno"}} name="newname" required="true"/>
+                <p>Apellido</p>
+                    <input type="text" class="form-control" value={{user.last_name| default_if_none:""}} placeholder={{user.last_name| default_if_none:"ninguno"}} name="newlname" required="true"/>
+                <p>Email</p>
+                    <input type="Email" class="form-control" value={{user.email| default_if_none:""}} placeholder={{user.email| default_if_none:"ninguno"}} name="newemail" required="true"/>
+                
+                {% if profile %}
+                        
+                    <p>Cédula</p> 
+                        <input type="text" class="form-control" value={{profile.cedula | default_if_none:"ninguna"}} placeholder={{profile.cedula | default_if_none:"ninguna"}} name="newcedula" required="true"/>
+                
+    
+                        <p>Direcciones: {{nro}}</p> 
+
+                    {% for address,nro in addresses.items %}
+                        <input type="text" class="form-control" value={{address| default_if_none:"ninguna"}} placeholder={{address | default_if_none:"ninguna"}} name="ciudad{{nro}}" required="true"/>
+                    {% endfor %}
+                    
+                    <br>
+                    <br>
+                    <p>Nueva Direccion</p>
+                    <input type="text" class="form-control" placeholder="Nueva Direccion" name="newaddress"/>
+                    <br><br>
+                {% endif %}
+                
+            <input type="hidden" name="userid" value={{user.id}}> 
+        </div>  
+
+
+        {% endif %}
+        <button type="submit" name="edit" value="True">editar</button>
+    </form>
+            
+{% endif %}
+
+
+
+
+

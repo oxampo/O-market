@@ -14,7 +14,21 @@
 </head>
 <body>
     <!-- {% include "nav.html" %} -->
-
+    <a href="{% url 'precios-list' %}" class="btn text-secondary px-0">
+        Productos
+    </a>
+    <a href="{% url 'product-list' %}" class="btn text-secondary px-0">
+        Descripción productos
+    </a>
+    <a href="{% url 'piece-list' %}" class="btn text-secondary px-0">
+        Piezas
+    </a>
+    <a href="{% url 'corte-list' %}" class="btn text-secondary px-0">
+        Cortes
+    </a>
+    <a href="{% url 'animal-list' %}" class="btn text-secondary px-0">
+        Animales
+    </a>
     <h1>Animales</h1>
     
     <table class="table table-borderless">

@@ -41,9 +41,11 @@ INSTALLED_APPS = [
 
     #Propias
     'products',
-    'users'
+    'users',
 
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,6 +58,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'omarket.urls'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 TEMPLATES = [
     {
@@ -84,7 +88,7 @@ WSGI_APPLICATION = 'omarket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'omarket6',
+        'NAME': 'omarket7',
         'USER': 'root',
         'PASSWORD': '', 
         'HOST': 'localhost',
