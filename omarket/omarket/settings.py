@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'omarket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'omarketgus',
-        'USER': 'dan',
-        'PASSWORD': '123', 
+        'NAME': 'omarket6',
+        'USER': 'root',
+        'PASSWORD': '', 
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

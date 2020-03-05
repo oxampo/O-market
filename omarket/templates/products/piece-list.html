@@ -15,14 +15,14 @@
 <body>
     <!-- {% include "nav.html" %} -->
 
-    <h1>Animales</h1>
+    <h1>Piezas</h1>
     
     <table class="table table-borderless">
         <thead>
             <tr>
                 <td>Nombre</td>
                 <td>
-                    <a href="{% url 'crud-animal' %}" class="btn text-secondary px-0">
+                    <a href="{% url 'crud-piece' %}" class="btn text-secondary px-0">
                         (Create)
                     </a>
                 </td>
@@ -30,11 +30,11 @@
             
         </thead>
         <tbody>
-            {% for Animals in animal_list %}
+            {% for Pieces in pieza_list %}
                 <tr>
-                    <td>{{ Animals.animalName }}</td>
+                    <td>{{ Pieces.pieceName }}</td>
                     <td>
-                        <a href="{% url 'animal-update' Animals.id %}" class="btn text-secondary px-0">
+                        <a href="{% url 'piece-update' Pieces.id %}" class="btn text-secondary px-0">
                             (Edit)
                         </a>
                     </td>

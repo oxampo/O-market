@@ -31,6 +31,10 @@ urlpatterns = [
     path('product-list/', product_views.productList, name="product-list"),
     path('product-list/<int:id>/', product_views.crudProduct, name="product-update"),
 
+    path('crud-piece/', product_views.crudPiece, name="crud-piece"),
+    path('piece-list/', product_views.pieceList, name="piece-list"),
+    path('piece-list/<int:id>/', product_views.crudPiece, name="piece-update"),
+
     path('crud-animal/', product_views.crudAnimal, name="crud-animal"),
     path('animal-list/', product_views.animalList, name="animal-list"),
     path('animal-list/<int:id>/', product_views.crudAnimal, name="animal-update"),
@@ -38,6 +42,10 @@ urlpatterns = [
     path('crud-corte/', product_views.crudCorte, name="crud-corte"),
     path('corte-list/', product_views.corteList, name="corte-list"),
     path('corte-list/<int:id>/', product_views.crudCorte, name="corte-update"),
+
+    path('asignar-precio/', product_views.asignarPrecio, name="asignar-precio"),
+    path('precios-list/', product_views.precioList, name="precios-list"),
+    path('precios-list/<int:id>/', product_views.asignarPrecio, name="precio-update"),
 
     #path('delete-product'),
     path('users/login', user_views.login_view, name="login"),

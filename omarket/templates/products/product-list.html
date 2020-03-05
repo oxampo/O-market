@@ -21,11 +21,10 @@
         <thead>
             <tr>
                 <td>Nombre</td>
-                <td>Precio</td>
                 <td>Disponibilidad</td>
                 <td>Descripción</td>
                 <td>Animal</td>
-                <td>Corte</td>
+                <td>Fecha</td>
                 <td>
                     <a href="{% url 'crud-productos' %}" class="btn text-secondary px-0">
                         (Create)
@@ -37,12 +36,11 @@
         <tbody>
             {% for Products in product_list %}
                 <tr>
-                    <td>{{ Products.prodName }}</td>
-                    <td>{{ Products.precio }}$</td>
-                    <td>{{ Products.disponibles }}</td>
-                    <td>{{ Products.descripcion }}</td>
-                    <td>{{ Products.animal }}</td>
-                    <td>{{ Products.corte }}</td>
+                    <td>{{ Products.animal_piece }}</td>
+                    <td>{{ Products.quantity }}</td>
+                    <td>{{ Products.description }}</td>
+                    <td>{{ Products.animal_product }}</td>
+                    <td>{{ Products.date }}</td>
                     <td>
                         <a href="{% url 'product-update' Products.id %}" class="btn text-secondary px-0">
                             (Edit)

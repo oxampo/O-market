@@ -15,26 +15,30 @@
 <body>
     <!-- {% include "nav.html" %} -->
 
-    <h1>Animales</h1>
+    <h1>Productos</h1>
     
     <table class="table table-borderless">
         <thead>
             <tr>
                 <td>Nombre</td>
+                <td>Fecha</td>
+                <td>Precio</td>
                 <td>
-                    <a href="{% url 'crud-animal' %}" class="btn text-secondary px-0">
-                        (Create)
+                    <a href="{% url 'asignar-precio' %}" class="btn text-secondary px-0">
+                        (Asignar)
                     </a>
                 </td>
             </tr>
             
         </thead>
         <tbody>
-            {% for Animals in animal_list %}
+            {% for Price in price_list %}
                 <tr>
-                    <td>{{ Animals.animalName }}</td>
+                    <td>{{ Price.price_product }}</td>
+                    <td>{{ Price.date_price }}</td>
+                    <td>{{ Price.price }}</td>
                     <td>
-                        <a href="{% url 'animal-update' Animals.id %}" class="btn text-secondary px-0">
+                        <a href="{% url 'precio-update' Price.id %}" class="btn text-secondary px-0">
                             (Edit)
                         </a>
                     </td>

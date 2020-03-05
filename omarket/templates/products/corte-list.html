@@ -30,11 +30,11 @@
             
         </thead>
         <tbody>
-            {% for Corts in corte_list %}
+            {% for Cuts in corte_list %}
                 <tr>
-                    <td>{{ Corts.corte }}</td>
+                    <td>{{ Cuts.cutName }}</td>
                     <td>
-                        <a href="{% url 'corte-update' Corts.id %}" class="btn text-secondary px-0">
+                        <a href="{% url 'corte-update' Cuts.id %}" class="btn text-secondary px-0">
                             (Edit)
                         </a>
                     </td>
