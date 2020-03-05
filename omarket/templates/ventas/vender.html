@@ -37,15 +37,18 @@
             {% endfor %}
             <br><br>
             <h2>Método de pago</h2>
-
+            <br><br>
+            <form action="{% url 'vender' %}" method="POST">
+                {% csrf_token %}
+                <label >Método de pago:</label>
+                <select id="métodosPagos" name="pago">
+                    <option  value="Visa">Visa</option>
+                    <option value="MasterCard">Master-Card</option>
+                    <option value="Zelle">Zelle</option>
+                    <option value="Culo">Culo</option>
+                </select>
+                <input type="submit" value="seleccionar">
+            </form>            
         {% endif %}
-
-
-
-
-
-
-
-
 </body>
 </html>
