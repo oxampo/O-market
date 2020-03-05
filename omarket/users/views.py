@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 #Models
 
 from django.contrib.auth.models import User 
-from users.models import Profile
+from users.models import Profile, Addresses
+
 
 #Excepción
 from django.db.utils import IntegrityError
@@ -82,8 +83,23 @@ def modify_user(request):
                 if  not user.is_staff:
                     print(user)
                     profile = Profile.objects.get(user=user)
-                    print(profile.address)
-                    return render(request, 'users/modify_user.html', {'user':user, 'profile':profile, 'ok':True})
+                    print(profile)
+
+                    addresses = Addresses.objects.filter(profile=profile)
+                    print("número de ciudades {}".format(len(addresses)))
+                    if not addresses == None:
+                        addressesinfo = {}
+                        n = len(addresses)
+                        for address in addresses:
+                            addressesinfo[address.address] = n
+                            n-=1
+                        print(addressesinfo)
+
+                        return render(request, 'users/modify_user.html', {'user':user, 'profile':profile,'addresses':addressesinfo,'nro':len(addresses), 'ok':True})
+                    
+                    else:
+                        return render(request, 'users/modify_user.html', {'user':user, 'profile':profile, 'ok':True})
+                
                 elif user.is_authenticated and request.POST['username']==user.username:
                     print(user)
                     return render(request, 'users/modify_user.html', {'user':user,'okk':True})
@@ -92,11 +108,9 @@ def modify_user(request):
             return render(request, 'users/modify_user.html', {'error':'No hay usuario encontrado'})
 
 
-
         try:
             if request.POST.get('newname') or request.POST.get('newlname') or request.POST.get('newemail'):
                 print("entró")
-                #print({{request.POST['newname'] | default_if_none:"nothing"}})
                 print(request.POST['newlname'])
                 print(request.POST.get('newemail'))
                 user = User.objects.get(id=request.POST['userid'])
@@ -106,20 +120,20 @@ def modify_user(request):
                 user.save()
 
                 if  not user.is_staff:
-                    if request.POST.get('newcedula') or request.POST.get('newaddress'): 
+                    if request.POST.get('newcedula'): 
+                        print("nueva cedula: {}".format(request.POST.get('newcedula')))
                         if int(request.POST.get('newcedula'))>0:
                             try:
-                                profile_x = Profile.objects.get(cedula=request.POST.get('newcedula')) 
+                                profile_x = Profile.objects.filter(cedula=request.POST.get('newcedula'))
                                 if profile_x: 
                                     return render(request, 'users/modify_user.html',{'error':'Número de cédula ya en uso'})
-                                else: 
-                                    pass
-                            except ObjectDoesNotExist:
 
-                                    profile.cedula = request.POST.get('newcedula')
-                                    profile = Profile.objects.get(user=user)
-                                    profile.address = request.POST.get('newaddress')
-                                    profile.save()
+                            except ObjectDoesNotExist:
+                                pass
+                            profile = Profile.objects.get(user=user)
+                            profile.cedula = request.POST.get('newcedula')
+                            profile.save()
+                                    
                         else:
                             return render(request, 'users/modify_user.html',{'error':'la cédula debe ser positiva'})
 
@@ -128,11 +142,26 @@ def modify_user(request):
         except KeyError:
             return render(request, 'users/modify_user.html',{'error':'no fue para el baile'})
         
+
+        
     return render(request, 'users/modify_user.html',{'no':True})
 
 def get_all(request):
-    users = User.objects.all()
 
-    return render(request,'users/all.html',{'users':users})
+    userso = User.objects.all()
 
-    
+    users = {}
+
+    for user in userso:
+        if not user.is_staff:
+                profile = Profile.objects.get(user=user)
+
+                data = {
+                    'name':user.first_name,
+                    'lastname':user.last_name,
+                    'dni': profile.cedula
+                }
+                users[user.username]=data
+
+    return render(request,'users/all.html',{'data':users})
+
