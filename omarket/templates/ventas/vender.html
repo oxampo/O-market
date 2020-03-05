@@ -12,7 +12,6 @@
 </head>
 <body class="h-100">
 
-
     <h2>Cédula de usuario</h2>
     {% if error %}
         <p class="alert alert-danger">{{error}}</p>
@@ -21,7 +20,7 @@
         {% csrf_token %}
 
         <div class="form-group" >
-            <input type="text" class="form-control" placeholder="cédula" name="cedula" required="true"/>
+            <input type="text" class="form-control" value="{% if cedula %}{{cedula}}{% endif %}"" placeholder="cédula" name="cedula" required="true"/>
         </div>
 
         <button class="btn btn-success btn-block mt-5" type="submit">Buscar</button>
@@ -36,19 +35,39 @@
                 </form>
             {% endfor %}
             <br><br>
-            <h2>Método de pago</h2>
+
             <br><br>
+            <h2>Products</h2>
             <form action="{% url 'vender' %}" method="POST">
                 {% csrf_token %}
-                <label >Método de pago:</label>
-                <select id="métodosPagos" name="pago">
-                    <option  value="Visa">Visa</option>
-                    <option value="MasterCard">Master-Card</option>
-                    <option value="Zelle">Zelle</option>
-                    <option value="Culo">Culo</option>
+                <select id="productos" name="product">
+                    {% for product  in  products %}
+                        <option  value="{{product}}">{{product}}</option>
+                    {% endfor %}
                 </select>
                 <input type="submit" value="seleccionar">
-            </form>            
+                <input type="hidden" value={{cedula}}>
+            </form>
+            {% if productSel %}
+
+                {{productSel}}
+                {% endif %}
+                
+                
+                <h2>Método de pago</h2>
+                <br><br>
+                <form action="{% url 'vender' %}" method="POST">
+                    {% csrf_token %}
+                    <label >Método de pago:</label>
+                    <select id="métodosPagos" name="pago">
+                        <option  value="Visa">Visa</option>
+                        <option value="MasterCard">Master-Card</option>
+                        <option value="Zelle">Zelle</option>
+                        <option value="Culo">Culo</option>
+                    </select>
+                    <input type="submit" value="pagar">
+                    <input type="hidden" value={{cedula}}>
+                </form>            
         {% endif %}
 </body>
 </html>

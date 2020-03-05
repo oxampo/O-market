@@ -5,6 +5,7 @@ from django.db.utils import IntegrityError
 from datetime import datetime
 from .models import Products
 from .models import Animals
+from .models import Animals
 from .models import Cuts
 from .models import Pieces
 from .models import Price
@@ -118,6 +119,7 @@ def crudProduct(request, id=0):
         if id==0:
             form = productForm(request.POST)
             validar = form['prodName'].value()
+            laPieza = form['piece_product'].value()
             productos = Products.objects.all()
             for producto in productos:
                 if validar == producto.prodName:
@@ -127,7 +129,10 @@ def crudProduct(request, id=0):
             product = Products.objects.get(pk=id)
             form = productForm(request.POST,instance= product)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
+            elanimal = Pieces.objects.get(piece_product=laPieza)
+            product = Products(prodName=data['prodName'], quantity= data['quantity'],exempt=data['exempt'],description=data['description'],piece_product=data['piece_product'] , animal_product_id=elanimal.id)
+            product.save()
         return redirect('product-list')
 
 def precioList(request):

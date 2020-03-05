@@ -31,7 +31,7 @@ class productForm(forms.ModelForm):
     class Meta:
         model = Products
         #fields = '__all__'
-        fields = {'prodName','quantity', 'exempt', 'description', 'piece_product', 'animal_product'}
+        fields = {'prodName','quantity', 'exempt', 'description', 'piece_product'}
         labels = {
             'prodName':'Nombre',
             'quantity':'Cantidad',
