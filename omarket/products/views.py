@@ -31,11 +31,18 @@ def crudCorte(request, id=0):
     else:
         if id==0:
             form = corteForm(request.POST)
+            validar = form['cutName'].value()
+            cortes = Cuts.objects.all()
+            for cut in cortes:
+                if validar == cut.cutName:
+                    #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
+                    return redirect('corte-list')
         else:
             corte = Cuts.objects.get(pk=id)
             form = corteForm(request.POST,instance= corte)
         if form.is_valid():
             form.save()
+
         return redirect('corte-list')
 
 def animalList(request):
