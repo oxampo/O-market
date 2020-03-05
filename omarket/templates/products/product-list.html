@@ -20,6 +20,7 @@
     <table class="table table-borderless">
         <thead>
             <tr>
+                <td>Pieza</td>
                 <td>Nombre</td>
                 <td>Disponibilidad</td>
                 <td>Descripción</td>
@@ -37,6 +38,7 @@
             {% for Products in product_list %}
                 <tr>
                     <td>{{ Products.animal_piece }}</td>
+                    <td>{{ Products.prodName }}</td>
                     <td>{{ Products.quantity }}</td>
                     <td>{{ Products.description }}</td>
                     <td>{{ Products.animal_product }}</td>

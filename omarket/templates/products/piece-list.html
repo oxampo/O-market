@@ -21,6 +21,8 @@
         <thead>
             <tr>
                 <td>Nombre</td>
+                <!-- <td>Animal</td>
+                <td>Corte</td> -->
                 <td>
                     <a href="{% url 'crud-piece' %}" class="btn text-secondary px-0">
                         (Create)
@@ -33,6 +35,8 @@
             {% for Pieces in pieza_list %}
                 <tr>
                     <td>{{ Pieces.pieceName }}</td>
+                    <!-- <td>{{ Pieces.animal_piece }}</td>
+                    <td>{{ Pieces.cut_piece }}</td> -->
                     <td>
                         <a href="{% url 'piece-update' Pieces.id %}" class="btn text-secondary px-0">
                             (Edit)
