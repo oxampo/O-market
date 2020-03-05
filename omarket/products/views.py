@@ -145,7 +145,12 @@ def asignarPrecio(request, id=0):
     else:
         if id==0:
             form = priceForm(request.POST)
-            
+            validar = form['price_product'].value()
+            precios = Price.objects.all()
+            for precio in precios:
+                if validar == precio.price_product:
+                    #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
+                    return redirect('product-list')
         else:
             price = Price.objects.get(pk=id)
             form = priceForm(request.POST,instance= price)
