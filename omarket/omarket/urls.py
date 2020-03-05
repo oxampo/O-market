@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings #esto se importa para la media
 from django.conf.urls.static import static #esto se importa para la media
-
+from products import views as product_views
 from users import views as user_views
 from modelsUTILS import views as u_views
 
@@ -27,7 +27,33 @@ from omarket import Gviews
 
 urlpatterns = [
     path('home/', Gviews.Home, name="home"),
+    path('compras/', Gviews.Compras, name="compras"),
     path('admin/', admin.site.urls),
+
+    path('crud-productos/', product_views.crudProduct, name="crud-productos"),
+    path('product-list/', product_views.productList, name="product-list"),
+    path('product-list/<int:id>/', product_views.crudProduct, name="product-update"),
+
+    path('crud-piece/', product_views.crudPiece, name="crud-piece"),
+    path('piece-list/', product_views.pieceList, name="piece-list"),
+    path('piece-list/<int:id>/', product_views.crudPiece, name="piece-update"),
+
+    path('crud-animal/', product_views.crudAnimal, name="crud-animal"),
+    path('animal-list/', product_views.animalList, name="animal-list"),
+    path('animal-list/<int:id>/', product_views.crudAnimal, name="animal-update"),
+
+    path('crud-corte/', product_views.crudCorte, name="crud-corte"),
+    path('corte-list/', product_views.corteList, name="corte-list"),
+    path('corte-list/<int:id>/', product_views.crudCorte, name="corte-update"),
+
+    path('asignar-precio/', product_views.asignarPrecio, name="asignar-precio"),
+    path('precios-list/', product_views.precioList, name="precios-list"),
+    path('precios-list/<int:id>/', product_views.asignarPrecio, name="precio-update"),
+
+    #path('delete-product'),
+    #path('users/login', user_views.login_view, name="login"),
+    #path('users/logout', user_views.logout_view,name='logout'),
+    path('users/signup',user_views.signup,name="signup"),
     path('users/main/signup',user_views.signup,name="signup"),
     path('querychingon', Gviews.QuerysChingones, name="chingones"),
     path('users/main', user_views.main, name="user_main"),
