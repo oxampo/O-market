@@ -21,7 +21,7 @@ class Animals(models.Model):
 class Pieces(models.Model):
     pieceName = models.CharField(max_length=30)
     cut_piece = models.ManyToManyField(Cuts)
-    animal_piece = models.ManyToManyField(Animals)
+    piece_product = models.ManyToManyField(Animals)
 
     def __str__(self):
         return self.pieceName
@@ -33,7 +33,7 @@ class Products(models.Model):
     date = models.DateField(default=datetime.now())
     description = models.CharField(max_length=100, blank=True, null=True)
     animal_product = models.ForeignKey(Animals, on_delete=models.CASCADE)
-    animal_piece = models.ForeignKey(Pieces, on_delete=models.CASCADE)
+    piece_product = models.ForeignKey(Pieces, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.prodName

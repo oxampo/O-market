@@ -7,6 +7,7 @@ from django.db import models
 
 #Models
 from users.models import Profile,Addresses
+from products.models import Price
 
 class Puzzle(models.Model):
 
@@ -23,8 +24,10 @@ class Orden(models.Model):
     instrumento_pago = models.CharField(max_length=15, blank=False,null=True)
     totalBruto = models.PositiveIntegerField(blank=False, null=True)
     totalNeto = models.PositiveIntegerField(blank=False, null=True)
-    
 
+class OrderDetails(models.Model):
+    Price_Id = models.ForeignKey(Price,on_delete=models.CASCADE)
+    cantidad_orden = models.PositiveSmallIntegerField(blank=False, null=True)
 
 class PuzzlesPorOrdenes (models.Model):
     puzzle = models.ForeignKey(Puzzle, on_delete=models.CASCADE)

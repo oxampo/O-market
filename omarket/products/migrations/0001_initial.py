@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('pieceName', models.CharField(max_length=30)),
-                ('animal_piece', models.ManyToManyField(to='products.Animals')),
+                ('piece_product', models.ManyToManyField(to='products.Animals')),
                 ('cut_piece', models.ManyToManyField(to='products.Cuts')),
             ],
         ),
@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('exempt', models.BooleanField(default=False)),
                 ('date', models.DateField(default=datetime.datetime(2020, 3, 5, 5, 5, 11, 785057))),
                 ('description', models.CharField(blank=True, max_length=100, null=True)),
-                ('animal_piece', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.Pieces')),
+                ('piece_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.Pieces')),
                 ('animal_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.Animals')),
             ],
         ),
