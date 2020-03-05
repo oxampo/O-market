@@ -11,4 +11,6 @@ def Home(request):
 def QuerysChingones(request):
 
     return render(request,'QueriesChingones/main.html')
+
+
     
