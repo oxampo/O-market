@@ -19,6 +19,7 @@ from django.conf import settings #esto se importa para la media
 from django.conf.urls.static import static #esto se importa para la media
 
 from users import views as user_views
+from modelsUTILS import views as u_views
 
 from omarket import Gviews
 
@@ -27,14 +28,15 @@ from omarket import Gviews
 urlpatterns = [
     path('home/', Gviews.Home, name="home"),
     path('admin/', admin.site.urls),
-
-    #path('users/login', user_views.login_view, name="login"),
-    #path('users/logout', user_views.logout_view,name='logout'),
     path('users/main/signup',user_views.signup,name="signup"),
     path('querychingon', Gviews.QuerysChingones, name="chingones"),
     path('users/main', user_views.main, name="user_main"),
     path('users/main/modify_user', user_views.modify_user, name="modify_user"),
-    path('users/main/all', user_views.get_all, name="getall")
+    path('users/main/all', user_views.get_all, name="getall"),
+    path('ventas/main', u_views.VentasMain, name="ventas"),
+    path('ventas/main/vender', u_views.Vender, name="vender"),
+    path('ventas/main/ordenes', u_views.Ordenes, name="ordenes"),
+
 
 ] 
 #+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
