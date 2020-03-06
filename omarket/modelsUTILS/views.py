@@ -69,17 +69,18 @@ def Ordenes(request):
     return render(request, 'ventas/orders.html')
 
 def puzzleList(request):
-    context = {'puzzle_list':Puzzles.objects.all()}
+    context = {'puzzle_list':Puzzle.objects.all()}
     return render(request, 'puzzles/puzzles-list.html', context)
 
-def puzzlesCrud(request):
+def puzzlesCrud(request, id=0):
 
     if request.method == "GET":
         if id==0:   #Si ID es igual a 0 es una operacion de Crear
             form = puzzleForm()
         else:
             puzzle = Puzzle.objects.get(pk=id) #obten todos los productos donde su primary key sea igual al id
-            form = puzzleForm(instance=Puzzle)
+            form = puzzleForm(instance=puzzle)
+            #form = puzzleForm()
         return render(request, 'puzzles/crud-puzzles.html', {'form':form})
     else:
         if id==0:
@@ -93,6 +94,7 @@ def puzzlesCrud(request):
         else:
             puzzle = Puzzle.objects.get(pk=id)
             form = puzzleForm(request.POST,instance= puzzle)
+            #form = puzzleForm(request.POST)
         if form.is_valid():
             form.save()
 

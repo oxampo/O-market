@@ -14,7 +14,7 @@
 </head>
 <body>
     <!-- {% include "nav.html" %} -->
-    <a href="{% url 'precios-list' %}" class="btn text-secondary px-0">
+    <!-- <a href="{% url 'precios-list' %}" class="btn text-secondary px-0">
         Precios por producto
     </a>
     <a href="{% url 'product-list' %}" class="btn text-secondary px-0">
@@ -28,21 +28,20 @@
     </a>
     <a href="{% url 'animal-list' %}" class="btn text-secondary px-0">
         Animales
-    </a>
-    <h1>Productos</h1>
+    </a> -->
+    <h1>Puzzles</h1>
     
     <table class="table table-borderless">
         <thead>
             <tr>
                 <td>Enunciado</td>
                 <td>Activo</td>
-                <td>Pieza</td>
                 <td>Descuento</td>
                 <td>Dificultad</td>
                 
                 
                 <td>
-                    <a href="{% url 'crud-puzzles' %}" class="btn text-secondary px-0">
+                    <a href="{% url 'crud-puzzle' %}" class="btn text-secondary px-0">
                         (Create)
                     </a>
                 </td>
@@ -58,7 +57,7 @@
                     <td>{{ Puzzles.dificultad }}</td>
 
                     <td>
-                        <a href="{% url 'product-update' Products.id %}" class="btn text-secondary px-0">
+                        <a href="{% url 'puzzle-update' Puzzles.id %}" class="btn text-secondary px-0">
                             (Edit)
                         </a>
                     </td>
