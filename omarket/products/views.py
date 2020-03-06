@@ -128,15 +128,17 @@ def crudProduct(request, id=0):
             product = Products.objects.get(pk=id)
             form = productForm(request.POST,instance= product)
         if form.is_valid():
-            laPieza = form['piece_product'].value()
-            elanimal = Pieces.objects.get(piece_product=laPieza)
+            #laPieza = form['piece_product'].value()
+            laPieza = Pieces.objects.filter(id =form['piece_product'].value())
+            elanimal = Pieces.objects.filter(piece_product =laPieza)
+            print(elanimal)
             if crear==True:    
                 data = form.cleaned_data
                 product = Products(prodName=data['prodName'], quantity= data['quantity'],exempt=data['exempt'],description=data['description'],piece_product=data['piece_product'] , animal_product_id=elanimal.id)
                 product.save()
             else:
                 data = form.cleaned_data
-                product = Products.objects.filter(pk=id).update(prodName=data['prodName'], quantity= data['quantity'],exempt=data['exempt'],description=data['description'],piece_product=data['piece_product'] , animal_product_id=elanimal.id)
+                product = Products.objects.filter(pk=id).update(prodName=data['prodName'], quantity= data['quantity'],exempt=data['exempt'],description=data['description'],piece_product=data['piece_product'] , animal_product_id=elanimal.value('animal_product'))
         return redirect('product-list')
 
 def precioList(request):
