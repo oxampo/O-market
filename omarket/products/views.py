@@ -92,10 +92,6 @@ def crudPiece(request, id=0):
             form = piecesForm(request.POST)
             validar = form['pieceName'].value()
             piezas = Pieces.objects.all()
-            for pieza in piezas:
-                if validar == pieza.pieceName:
-                    #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
-                    return redirect('piece-list')
         else:
             pieza = Pieces.objects.get(pk=id)
             form = piecesForm(request.POST,instance= pieza)
@@ -105,6 +101,8 @@ def crudPiece(request, id=0):
 
 def productList(request):
     context = {'product_list':Products.objects.all()}
+    print(Products.objects.all())
+    print('aqui ')
     return render(request, 'products/product-list.html', context)
 
 def crudProduct(request, id=0):
@@ -168,8 +166,3 @@ def asignarPrecio(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('precios-list')
-
-
-def querieChingon1(request):
-    q = {'algo':'asiess'}
-    return render(request, 'QueriesChingones/chingon1.html', q)

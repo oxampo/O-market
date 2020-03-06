@@ -41,3 +41,20 @@ class Delivery(models.Model):
     direccion = models.ForeignKey(Addresses, on_delete=models.CASCADE)
     entregado = models.BooleanField(blank=False, null=True)
 
+class PrecioActual(models.Model):
+ Nombre = models.CharField(max_length=100)
+ Cantidad = models.IntegerField()
+ Animal = models.CharField(max_length=100)
+ Pieza = models.CharField(max_length=100)
+ Precio = models.CharField(max_length=100)
+ Fecha = models.DateField(max_length=100) 
+class Meta:
+    managed = False
+    db_table = 'precio_actual'
+
+class PuzzleAcierto(models.Model):
+  Puzzle = models.CharField(max_length=100)
+  Aciertos = models.IntegerField()
+class Meta:
+    managed = False
+    db_table = 'puzzle_aciertos'

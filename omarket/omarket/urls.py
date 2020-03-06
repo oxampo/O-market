@@ -50,7 +50,9 @@ urlpatterns = [
     path('precios-list/', product_views.precioList, name="precios-list"),
     path('precios-list/<int:id>/', product_views.asignarPrecio, name="precio-update"),
 
-    path('querie-chingon-1/', product_views.querieChingon1, name="querie-chingon-1"),
+    path('querie-chingon-1/', u_views.querieChingon1, name="querie-chingon-1"),
+    path('querie-chingon-2/', u_views.querieChingon2, name="querie-chingon-2"),
+    path('querie-chingon-3/', u_views.querieChingon3, name="querie-chingon-3"),
 
     path('crud-puzzle/', u_views.puzzlesCrud, name="crud-puzzle"),
     path('puzzle-list/',  u_views.puzzleList, name="puzzle-list"),
