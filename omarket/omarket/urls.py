@@ -50,6 +50,12 @@ urlpatterns = [
     path('precios-list/', product_views.precioList, name="precios-list"),
     path('precios-list/<int:id>/', product_views.asignarPrecio, name="precio-update"),
 
+    path('querie-chingon-1/', product_views.querieChingon1, name="querie-chingon-1"),
+
+    path('crud-puzzle/', u_views.puzzlesCrud, name="crud-puzzle"),
+    path('puzzle-list/',  u_views.puzzleList, name="puzzle-list"),
+    path('puzzle-list/<int:id>/', u_views.puzzlesCrud, name="puzzle-update"),
+
     #path('delete-product'),
     #path('users/login', user_views.login_view, name="login"),
     #path('users/logout', user_views.logout_view,name='logout'),

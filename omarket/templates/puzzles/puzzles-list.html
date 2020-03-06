@@ -34,16 +34,15 @@
     <table class="table table-borderless">
         <thead>
             <tr>
-                <td>Nombre</td>
-                <td>Animal</td>
+                <td>Enunciado</td>
+                <td>Activo</td>
                 <td>Pieza</td>
-                <td>Disponibilidad</td>
-                <td>Fecha</td>
-                <td>Descripción</td>
+                <td>Descuento</td>
+                <td>Dificultad</td>
                 
                 
                 <td>
-                    <a href="{% url 'crud-productos' %}" class="btn text-secondary px-0">
+                    <a href="{% url 'crud-puzzles' %}" class="btn text-secondary px-0">
                         (Create)
                     </a>
                 </td>
@@ -51,14 +50,12 @@
             
         </thead>
         <tbody>
-            {% for Products in product_list %}
+            {% for Puzzles in puzzle_list %}
                 <tr>
-                    <td>{{ Products.prodName }}</td>
-                    <td>{{ Products.animal_product }}</td>
-                    <td>{{ Products.piece_product }}</td>
-                    <td>{{ Products.quantity }}</td>
-                    <td>{{ Products.date }}</td>
-                    <td>{{ Products.description }}</td>
+                    <td>{{ Puzzles.enunciado }}</td>
+                    <td>{{ Puzzles.activo }}</td>
+                    <td>{{ Puzzles.descuento }}</td>
+                    <td>{{ Puzzles.dificultad }}</td>
 
                     <td>
                         <a href="{% url 'product-update' Products.id %}" class="btn text-secondary px-0">
