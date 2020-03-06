@@ -108,6 +108,7 @@ def productList(request):
     return render(request, 'products/product-list.html', context)
 
 def crudProduct(request, id=0):
+    crear = True
     if request.method == "GET":
         if id==0:   #Si ID es igual a 0 es una operacion de Crear
             form = productForm()
@@ -119,20 +120,25 @@ def crudProduct(request, id=0):
         if id==0:
             form = productForm(request.POST)
             validar = form['prodName'].value()
-            laPieza = form['piece_product'].value()
             productos = Products.objects.all()
             for producto in productos:
                 if validar == producto.prodName:
                     #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
                     return redirect('product-list')
         else:
+            crear = False
             product = Products.objects.get(pk=id)
             form = productForm(request.POST,instance= product)
         if form.is_valid():
-            data = form.cleaned_data
+            laPieza = form['piece_product'].value()
             elanimal = Pieces.objects.get(piece_product=laPieza)
-            product = Products(prodName=data['prodName'], quantity= data['quantity'],exempt=data['exempt'],description=data['description'],piece_product=data['piece_product'] , animal_product_id=elanimal.id)
-            product.save()
+            if crear==True:    
+                data = form.cleaned_data
+                product = Products(prodName=data['prodName'], quantity= data['quantity'],exempt=data['exempt'],description=data['description'],piece_product=data['piece_product'] , animal_product_id=elanimal.id)
+                product.save()
+            else:
+                data = form.cleaned_data
+                product = Products.objects.filter(pk=id).update(prodName=data['prodName'], quantity= data['quantity'],exempt=data['exempt'],description=data['description'],piece_product=data['piece_product'] , animal_product_id=elanimal.id)
         return redirect('product-list')
 
 def precioList(request):
