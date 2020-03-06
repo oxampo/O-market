@@ -32,13 +32,19 @@
     <a href="{% url 'puzzle-list' %}" class="btn text-secondary px-0">
         Puzzles
     </a>
-    <h1>Cortes</h1>
+    <h1>Puzzles</h1>
+    
     <table class="table table-borderless">
         <thead>
             <tr>
-                <td>Nombre</td>
+                <td>Enunciado</td>
+                <td>Activo</td>
+                <td>Descuento</td>
+                <td>Dificultad</td>
+                
+                
                 <td>
-                    <a href="{% url 'crud-corte' %}" class="btn text-secondary px-0">
+                    <a href="{% url 'crud-puzzle' %}" class="btn text-secondary px-0">
                         (Create)
                     </a>
                 </td>
@@ -46,11 +52,15 @@
             
         </thead>
         <tbody>
-            {% for Cuts in corte_list %}
+            {% for Puzzles in puzzle_list %}
                 <tr>
-                    <td>{{ Cuts.cutName }}</td>
+                    <td>{{ Puzzles.enunciado }}</td>
+                    <td>{{ Puzzles.activo }}</td>
+                    <td>{{ Puzzles.descuento }}</td>
+                    <td>{{ Puzzles.dificultad }}</td>
+
                     <td>
-                        <a href="{% url 'corte-update' Cuts.id %}" class="btn text-secondary px-0">
+                        <a href="{% url 'puzzle-update' Puzzles.id %}" class="btn text-secondary px-0">
                             (Edit)
                         </a>
                     </td>
@@ -58,8 +68,6 @@
             {% endfor %}
         </tbody>
     </table>
-    
-    
 
 </body>
 </html>

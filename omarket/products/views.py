@@ -168,3 +168,8 @@ def asignarPrecio(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('precios-list')
+
+
+def querieChingon1(request):
+    q = {'algo':'asiess'}
+    return render(request, 'QueriesChingones/chingon1.html', q)

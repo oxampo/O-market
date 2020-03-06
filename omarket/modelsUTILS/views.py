@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.template.loader import get_template
+from django.http import HttpResponse
+from django.db.utils import IntegrityError
 from django.contrib.auth.models import User 
 from users.models import Profile, Addresses
-from django.db.utils import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
-
+from .models import Puzzle
 from products.models import Products
+from .forms import puzzleForm
 
 # Create your views here.
 
@@ -64,3 +67,35 @@ def Ordenes(request):
 
 
     return render(request, 'ventas/orders.html')
+
+def puzzleList(request):
+    context = {'puzzle_list':Puzzle.objects.all()}
+    return render(request, 'puzzles/puzzles-list.html', context)
+
+def puzzlesCrud(request, id=0):
+
+    if request.method == "GET":
+        if id==0:   #Si ID es igual a 0 es una operacion de Crear
+            form = puzzleForm()
+        else:
+            puzzle = Puzzle.objects.get(pk=id) #obten todos los productos donde su primary key sea igual al id
+            form = puzzleForm(instance=puzzle)
+            #form = puzzleForm()
+        return render(request, 'puzzles/crud-puzzles.html', {'form':form})
+    else:
+        if id==0:
+            form = puzzleForm(request.POST)
+            validar = form['enunciado'].value()
+            puzzles = Puzzle.objects.all()
+            for puzzle in puzzles:
+                if validar == puzzle.cutName:
+                    #return render(request, 'products/crud-corte.html', {'form':form}, {'error':'ERROR: Este aatributo ya fue creado'})
+                    return redirect('puzzle-list')
+        else:
+            puzzle = Puzzle.objects.get(pk=id)
+            form = puzzleForm(request.POST,instance= puzzle)
+            #form = puzzleForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+        return redirect('puzzle-list')
