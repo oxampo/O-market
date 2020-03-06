@@ -19,24 +19,17 @@
     <table class="table table-borderless">
         <thead>
             <tr>
-                <td>Nombre</td>
-                <td>Cantidad</td>
-                <td>Animal</td>
-                <td>Pieza</td>
-                <td>Precio</td>
-                <td>Fecha</td>
+                <td>Puzzle</td>
+                <td>Cantidad de Aciertos</td>
             </tr>
             
         </thead>
         <tbody>
             {% for Precios in precios %}
                 <tr>
-                    <td>{{ Precios.Nombre }}</td>
+                    <td>{{ Precios.Puzzle }}</td>
                     <td>{{ Precios.Cantidad }}</td>
-                    <td>{{ Precios.Animal }}</td>
-                    <td>{{ Precios.Pieza }}</td>
-                    <td>{{ Precios.Precio }}</td>
-                    <td>{{ Precios.Fecha }}</td>
+
                 </tr>
             {% endfor %}
         </tbody>

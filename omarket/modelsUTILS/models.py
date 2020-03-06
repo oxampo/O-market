@@ -42,19 +42,19 @@ class Delivery(models.Model):
     entregado = models.BooleanField(blank=False, null=True)
 
 class PrecioActual(models.Model):
- Nombre = models.CharField()
+ Nombre = models.CharField(max_length=100)
  Cantidad = models.IntegerField()
- Animal = models.CharField()
- Pieza = models.CharField()
- Precio = models.CharField()
- Fecha = models.DateField()
+ Animal = models.CharField(max_length=100)
+ Pieza = models.CharField(max_length=100)
+ Precio = models.CharField(max_length=100)
+ Fecha = models.DateField(max_length=100) 
 class Meta:
-        managed = False
-        db_table = 'ultimo_precio'
+    managed = False
+    db_table = 'precio_actual'
 
 class PuzzleAcierto(models.Model):
- Puzzle = models.CharField()
- Aciertos = models.IntegerField()
+  Puzzle = models.CharField(max_length=100)
+  Aciertos = models.IntegerField()
 class Meta:
-        managed = False
-        db_table = 'puzzle_aciertos'
+    managed = False
+    db_table = 'puzzle_aciertos'

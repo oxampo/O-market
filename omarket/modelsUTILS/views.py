@@ -8,12 +8,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from .models import Puzzle
 from products.models import Products
 from .forms import puzzleForm
+from .models import PrecioActual, PuzzleAcierto
 
 # Create your views here.
 
 def VentasMain(request):
     return render(request,'ventas/main.html')
-
 
 def Vender(request):
     data = {}
@@ -37,7 +37,6 @@ def Vender(request):
             data['cedula'] =profile.cedula
         except:      
             return render(request,'ventas/vender.html',{'error':'no existe perfil/usuario de cédula {}. Debe registrarlo'.format(cedula)})
-            
 
         if request.POST.get('product'):
             product = request.POST.get('product')
@@ -61,11 +60,7 @@ def Vender(request):
         
     return render(request,'ventas/vender.html')
 
-
-
 def Ordenes(request):
-
-
     return render(request, 'ventas/orders.html')
 
 def puzzleList(request):
@@ -99,3 +94,19 @@ def puzzlesCrud(request, id=0):
             form.save()
 
         return redirect('puzzle-list')
+
+def querieChingon1(request):
+    q = {'algo':'asiess'}
+    return render(request, 'QueriesChingones/chingon1.html', q)
+
+def querieChingon2(request):
+    var =  PrecioActual.objects.all()
+    print(var)
+    precios = {'precios' : var}
+    return render(request, 'QueriesChingones/PreciosActual.html', precios)
+
+def querieChingon3(request):
+    var =  PuzzleAcierto.objects.all()
+    print(var)
+    precios = {'precios' : var}
+    return render(request, 'QueriesChingones/PuzzleResolved.html', precios)
