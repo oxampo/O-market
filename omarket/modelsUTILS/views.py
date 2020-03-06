@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from users.models import Profile, Addresses
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Puzzle
-from products.models import Products
+from products.models import Products, Price
 from .forms import puzzleForm
 from .models import PrecioActual, PuzzleAcierto
 
@@ -96,17 +96,15 @@ def puzzlesCrud(request, id=0):
         return redirect('puzzle-list')
 
 def querieChingon1(request):
-    q = {'algo':'asiess'}
-    return render(request, 'QueriesChingones/chingon1.html', q)
+    q = "mislas"
+    return render(request, 'QueriesChingones/chingon1.html', {'algo':q})
 
 def querieChingon2(request):
-    var =  PrecioActual.objects.all()
-    print(var)
+    var =  PrecioActual.objects.values('Nombre','Cantidad','Animal','Pieza','Precio','Fecha')
     precios = {'precios' : var}
     return render(request, 'QueriesChingones/PreciosActual.html', precios)
 
 def querieChingon3(request):
-    var =  PuzzleAcierto.objects.all()
-    print(var)
+    var =  PuzzleAcierto.objects.values('Puzzle','Puzzle')
     precios = {'precios' : var}
     return render(request, 'QueriesChingones/PuzzleResolved.html', precios)

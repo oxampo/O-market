@@ -3,11 +3,10 @@ from django.db import models
 # Create your models here.
 """  Project models """
 #Django
-from django.db import models
 
 #Models
 from users.models import Profile,Addresses
-from products.models import Price
+from products.models import Price, Products
 
 class Puzzle(models.Model):
 
@@ -42,19 +41,19 @@ class Delivery(models.Model):
     entregado = models.BooleanField(blank=False, null=True)
 
 class PrecioActual(models.Model):
- Nombre = models.CharField(max_length=100)
- Cantidad = models.IntegerField()
- Animal = models.CharField(max_length=100)
- Pieza = models.CharField(max_length=100)
- Precio = models.CharField(max_length=100)
- Fecha = models.DateField(max_length=100) 
-class Meta:
-    managed = False
-    db_table = 'precio_actual'
+    Nombre = models.CharField(max_length=100)
+    Cantidad = models.IntegerField()
+    Animal = models.CharField(max_length=100)
+    Pieza = models.CharField(max_length=100)
+    Precio = models.CharField(max_length=100)
+    Fecha = models.DateField(max_length=100) 
+    class Meta:
+        managed = False
+        db_table = 'precio_actual'
 
 class PuzzleAcierto(models.Model):
-  Puzzle = models.CharField(max_length=100)
-  Aciertos = models.IntegerField()
-class Meta:
-    managed = False
-    db_table = 'puzzle_aciertos'
+    Puzzle = models.CharField(max_length=100)
+    Aciertos = models.IntegerField()
+    class Meta:
+        managed = False
+        db_table = 'puzzle_acertados' 
